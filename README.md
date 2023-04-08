@@ -1,6 +1,6 @@
 # django-project-template
 
-Template for Django project
+Template for Django projects
 
 The template is based on Django framework and allows you to rapidly create a RESTfull API with django REST framework
 
@@ -14,7 +14,7 @@ The template is based on Django framework and allows you to rapidly create a RES
     
   - Linux or Mac OS :
     
-    `python3 -m venv .env` ou `python -m venv .env`
+    `python3 -m venv .env` or `python -m venv .env`
     
 - Activate the virtual environment :
   
@@ -80,8 +80,8 @@ The template is based on Django framework and allows you to rapidly create a RES
     
   - Linux or Mac OS :
     
-    `python3 manage.py migrate` ou `python manage.py migrate`
+    `python3 manage.py migrate` or `python manage.py migrate`
     
-    `python3 manage.py makemigrations` ou `python manage.py makemigrations`
+    `python3 manage.py makemigrations` or `python manage.py makemigrations`
     
-    `python3 manage.py migrate` ou `python manage.py migrate`
+    `python3 manage.py migrate` or `python manage.py migrate`
