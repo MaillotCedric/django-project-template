@@ -4,6 +4,24 @@ Template for Django projects
 
 The template is based on Django framework and allows you to rapidly create a RESTfull API with django REST framework
 
+## Setup repository
+
+a. Choose a new repository name
+
+b. Use it to rename the current cloned repository
+
+c. Delete the current `.init` file (the file might be hidden)
+
+d. Run the following command in the terminal of the repository
+
+  ```
+  git init
+  git add .
+  git commit
+  ```
+
+*You are now ready to install the project :)*
+
 ## Installation
 
 - Install a virtual environment :
