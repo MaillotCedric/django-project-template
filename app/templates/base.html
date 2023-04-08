@@ -20,7 +20,12 @@
         <title>My app</title>
     </head>
     <body>
-        <nav>My app</nav>
+        <nav>
+            My app
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}">Se déconnecter</a>
+            {% endif %}
+        </nav>
 
         {% block contenu %}
         {% endblock %}
