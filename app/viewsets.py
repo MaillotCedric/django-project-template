@@ -12,10 +12,11 @@ class CreateModelViewSet(ModelViewSet):
 
 # class UsersAPIViewset(MultipleSerializerMixin, ModelViewSet):
 # class UsersAPIViewset(MultipleSerializerMixin, ReadOnlyModelViewSet):
-class UsersAPIViewset(MultipleSerializerMixin, ReadUpdateModelViewSet, EnablePartialUpdateMixin):
+class UsersAPIViewset(MultipleSerializerMixin, ReadUpdateModelViewSet):
+# class UsersAPIViewset(MultipleSerializerMixin, ReadUpdateModelViewSet, EnablePartialUpdateMixin):
     serializer_class = UsersListeSerializer
     details_serializer_class = UsersDetailsSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         queryset = User.objects.all()
