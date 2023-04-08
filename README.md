@@ -151,3 +151,13 @@ d. Run the following command in the terminal of the repository
     `python3 manage.py makemigrations` or `python manage.py makemigrations`
     
     `python3 manage.py migrate` or `python manage.py migrate`
+    
+- Create datasets :
+
+  - Windows :
+
+    `py manage.py init_local_dev`
+
+  - Linux or Mac OS :
+
+    `python3 manage.py init_local_dev` or `python manage.py init_local_dev`
