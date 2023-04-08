@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
 
 """
 Used to protect Django Secret and OAuth Keys
@@ -149,4 +150,12 @@ REST_FRAMEWORK = {
     # "DEFAULT_PERMISSION_CLASSES": (
     #     "rest_framework.permissions.IsAdminUser"
     # ),
+}
+
+MESSAGE_TAGS = {
+    messages.DEBUG: "alert-secondary",
+    messages.INFO: "alert-info",
+    messages.SUCCESS: "alert-success",
+    messages.WARNING: "alert-warning",
+    messages.ERROR: "alert-danger",
 }
