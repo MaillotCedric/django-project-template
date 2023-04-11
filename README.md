@@ -187,3 +187,17 @@ d. Run the following command in the terminal of the repository
         self.is_active = True
         self.save()
   ```
+
+---
+
+## API REST
+
+| URI                                               | Method | Data      | Description                  |
+| ------------------------------------------------- | ------ | --------- | ---------------------------- |
+| localhost:8000/api/users/                         | GET    | None      | Get users list               |
+| localhost:8000/api/users/{{id_users}}/            | GET    | None      | Get user instance            |
+| localhost:8000/api/users/{{id_users}}/            | PATCH  | `[email]` | Update user's instance email |
+| localhost:8000/api/users/{{id_users}}/deactivate/ | PATCH  | None      | Deactivate user instance     |
+| localhost:8000/api/users/{{id_users}}/activate/   | PATCH  | None      | Activate user instance       |
+
+---
