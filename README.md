@@ -192,12 +192,12 @@ d. Run the following command in the terminal of the repository
 
 ## API REST
 
-| URI                                               | Method | Data      | Description                  |
-| ------------------------------------------------- | ------ | --------- | ---------------------------- |
-| localhost:8000/api/users/                         | GET    | None      | Get users list               |
-| localhost:8000/api/users/{{id_users}}/            | GET    | None      | Get user instance            |
-| localhost:8000/api/users/{{id_users}}/            | PATCH  | `[email]` | Update user's instance email |
-| localhost:8000/api/users/{{id_users}}/deactivate/ | PATCH  | None      | Deactivate user instance     |
-| localhost:8000/api/users/{{id_users}}/activate/   | PATCH  | None      | Activate user instance       |
+| URI                                               | Authorization    | Method | Data      | Description                  |
+| ------------------------------------------------- | ---------------- | ------ | --------- | ---------------------------- |
+| localhost:8000/api/users/                         | No Auth          | GET    | None      | Get users list               |
+| localhost:8000/api/users/{{id_users}}/            | No Auth          | GET    | None      | Get user instance            |
+| localhost:8000/api/users/{{id_users}}/            | Basic Auth       | PATCH  | `[email]` | Update user's instance email |
+| localhost:8000/api/users/{{id_users}}/deactivate/ | Basic Auth       | PATCH  | None      | Deactivate user instance     |
+| localhost:8000/api/users/{{id_users}}/activate/   | Basic Auth       | PATCH  | None      | Activate user instance       |
 
 ---
