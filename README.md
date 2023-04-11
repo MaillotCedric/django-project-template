@@ -161,3 +161,29 @@ d. Run the following command in the terminal of the repository
   - Linux or Mac OS :
 
     `python3 manage.py init_local_dev` or `python manage.py init_local_dev`
+
+- Update `.env/lib/python3.10/site-packages/django/contrib/auth/base_user.py` :
+
+  ```python
+  from django.db import transaction
+
+  class AbstractBaseUser(models.Model):
+    password = models.CharField(_("password"), max_length=128)
+    last_login = models.DateTimeField(_("last login"), blank=True, null=True)
+    #...
+    @transaction.atomic
+    def deactivate(self):
+        if self.is_active is False:
+            return
+        
+        self.is_active = False
+        self.save()
+
+    @transaction.atomic
+    def activate(self):
+        if self.is_active is True:
+            return
+        
+        self.is_active = True
+        self.save()
+  ```
