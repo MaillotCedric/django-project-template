@@ -194,10 +194,10 @@ d. Run the following command in the terminal of the repository
 
 | URI                                               | Authorization    | Method | Data      | Description                  |
 | ------------------------------------------------- | ---------------- | ------ | --------- | ---------------------------- |
-| localhost:8000/api/users/                         | No Auth          | GET    | None      | Get users list               |
-| localhost:8000/api/users/{{id_user}}/            | No Auth          | GET    | None      | Get user instance            |
-| localhost:8000/api/users/{{id_user}}/            | Basic Auth       | PATCH  | `[email]` | Update user's instance email |
-| localhost:8000/api/users/{{id_user}}/deactivate/ | Basic Auth       | PATCH  | None      | Deactivate user instance     |
-| localhost:8000/api/users/{{id_user}}/activate/   | Basic Auth       | PATCH  | None      | Activate user instance       |
+|                /api/users/                        | No Auth          | GET    | None      | Get users list               |
+|                /api/users/{{id_user}}/            | No Auth          | GET    | None      | Get user instance            |
+|                /api/users/{{id_user}}/            | Basic Auth       | PATCH  | `[email]` | Update user's instance email |
+|                /api/users/{{id_user}}/deactivate/ | Basic Auth       | PATCH  | None      | Deactivate user instance     |
+|                /api/users/{{id_user}}/activate/   | Basic Auth       | PATCH  | None      | Activate user instance       |
 
 ---
