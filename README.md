@@ -10,14 +10,14 @@ a. Choose a new repository name
 
 b. Use it to rename the current cloned repository
 
-c. Delete the current `.init` file (the file might be hidden)
+c. Delete the current `.git` folder (the folder might be hidden)
 
 d. Run the following command in the terminal of the repository
 
   ```
   git init
   git add .
-  git commit
+  git commit -m "Init repository"
   ```
 
 *You are now ready to install the project :)*
@@ -187,6 +187,8 @@ d. Run the following command in the terminal of the repository
         self.is_active = True
         self.save()
   ```
+
+- Update README.md
 
 ---
 
