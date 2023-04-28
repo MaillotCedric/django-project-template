@@ -12,7 +12,9 @@ b. Use it to rename the current cloned repository
 
 c. Delete the current `.git` folder (the folder might be hidden)
 
-d. Run the following command in the terminal of the repository
+d. Update README.md
+
+e. Run the following command in the terminal of the repository
 
   ```
   git init
@@ -187,8 +189,6 @@ d. Run the following command in the terminal of the repository
         self.is_active = True
         self.save()
   ```
-
-- Update README.md
 
 ---
 
