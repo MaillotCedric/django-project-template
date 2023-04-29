@@ -109,9 +109,9 @@ e. Run the following command in the terminal of the repository
   
   - Database settings :
     
-    - Name : ``<database's name>``
-    - User : ``<database's user's name> (default : postgres)``
-    - Password : ``<database's password>``
+    - Name : ``<database name>``
+    - User : ``<database user name> (default : postgres)``
+    - Password : ``<database password>``
   
 - Update `project/settings.py` [(*source*)](https://codinggear.blog/django-environment-variables/) :
   
@@ -131,9 +131,9 @@ e. Run the following command in the terminal of the repository
 - Update `project/.env` :
   
   ```
-  DB_NAME=<database's name>
-  DB_USER_NAME=<database's user's name> (default : postgres)
-  DB_PASSWORD=<database's password>
+  DB_NAME=<database name>
+  DB_USER_NAME=<database user name> (default : postgres)
+  DB_PASSWORD=<database password>
   ```
 
 ---
@@ -164,7 +164,15 @@ e. Run the following command in the terminal of the repository
 
     `python3 manage.py init_local_dev` or `python manage.py init_local_dev`
 
-- Update `.env/lib/python3.10/site-packages/django/contrib/auth/base_user.py` :
+- Update `base_user.py` :
+
+  - Path (Windows) :
+
+    `.env/Lib/site-packages/django/contrib/auth/base_user.py`
+
+  - Path (Linux or Mac OS) :
+
+    `.env/lib/python<Python version>/site-packages/django/contrib/auth/base_user.py`
 
   ```python
   from django.db import transaction
