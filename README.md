@@ -109,9 +109,9 @@ e. Run the following command in the terminal of the repository
   
   - Database settings :
     
-    - Name : ``<database name>``
-    - User : ``<user name> (default : postgres)``
-    - Password : ``<database password>``
+    - Name : ``<database's name>``
+    - User : ``<database's user's name> (default : postgres)``
+    - Password : ``<database's password>``
   
 - Update `project/settings.py` [(*source*)](https://codinggear.blog/django-environment-variables/) :
   
@@ -120,7 +120,7 @@ e. Run the following command in the terminal of the repository
       "default": {
           "ENGINE": "django.db.backends.postgresql_psycopg2",
           "NAME": os.environ.get("DB_NAME"),
-          "USER": os.environ.get("DB_USER"),
+          "USER": os.environ.get("DB_USER_NAME"),
           "PASSWORD": os.environ.get("DB_PASSWORD"),
           "HOST": "127.0.0.1",
           "PORT": "5432",
@@ -131,9 +131,9 @@ e. Run the following command in the terminal of the repository
 - Update `project/.env` :
   
   ```
-  DB_NAME = <database name>
-  DB_USER_NAME = <user name> (default : postgres)
-  DB_PASSWORD = <database password>
+  DB_NAME=<database's name>
+  DB_USER_NAME=<database's user's name> (default : postgres)
+  DB_PASSWORD=<database's password>
   ```
 
 ---
