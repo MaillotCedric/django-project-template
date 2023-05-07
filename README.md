@@ -1,213 +1,200 @@
-# django-project-template
+# Project template : Django
 
-Template for Django projects
+Template for Django projects.
 
-The template is based on Django framework and allows you to rapidly create a RESTfull API with django REST framework
+The template is based on Django framework and allows you to rapidly create a RESTfull API with django REST framework.
 
-## Setup repository
+## Setting up the repository
 
-a. Choose a new repository name
-
-b. Use it to rename the current cloned repository
-
-c. Delete the current `.git` folder (the folder might be hidden)
-
-d. Update README.md
-
-e. Run the following command in the terminal of the repository
-
-  ```
+- Choose a new repository name
+  
+- Use it to rename the current cloned repository
+  
+- Delete the current `.git` folder (the folder might be hidden)
+  
+- Update `README.md`
+  
+- Run the following command in the terminal of the repository :
+  
+  ```git
   git init
   git add .
-  git commit -m "Init repository"
+  git commit -m "<commit message>"
   ```
+  
 
-*You are now ready to install the project :)*
+*You are now ready to install the project. :)*
 
 ## Installation
 
-- Install a virtual environment :
+- Install a virtual environment
   
-  - Windows :
-    
-    `py -m venv .env`
-    
-  - Linux or Mac OS :
-    
-    `python3 -m venv .env` or `python -m venv .env`
-    
-- Activate the virtual environment :
+  ```powershell
+  <Python command> -m venv .env
+  ```
   
-  - Windows :
-    
-    `.env\Scripts\activate`
-    
-  - Linux or Mac OS :
-    
-    `source .env/bin/activate`
-    
-- Install packages (Django, ...) :
+- Activate the virtual environment
   
-  `pip install -r requirements.txt`
-
-- Hide the key to the castle :
-
-  - Create the safe :
+  - Windows
+    
+    ```powershell
+    .env\Scripts\activate
+    ```
+    
+  - Linux
+    
+    ```powershell
+    source .env/bin/activate
+    ```
+    
+- Install packages
   
-     Inside `project` folder, create a file called `.env`
-    
-  - Generate the key [(*source*)](https://codinggear.blog/django-generate-secret-key/?utm_content=cmp-true/) :
+  ```powershell
+  pip install -r requirements.txt
+  ```
   
-     a. Run the following command in the terminal of your Django project
+- Hide the key to the castle
+  
+  - Create the safe
     
-     . Windows :
+    Inside `project` folder, create a file called `.env`.
     
-      `py manage.py shell`
-     
-     . Linux or Mac OS :
-     
-      `python3 manage.py shell` or `python manage.py shell`
-     
-     b. Import the key generator function
+  - Generate the key
     
-     Run the following command and hit `Enter` :
+    We gonna generate the key through the Django shell interface.
     
-      `from django.core.management.utils import get_random_secret_key`
+    To launch the shell interface, run the following command in the terminal of your Django project :
+    
+    ```powershell
+    <Python command> manage.py shell
+    ```
+    
+    - Import the key generator function
       
-     c. Generate a random key
-     
-     On the next line we can now use the function to generate the secret key
-     
-      `print(get_random_secret_key())`
+      Run the following command and hit `Enter` :
       
-     
-   - Hide the key
-   
-     Copy the generated key
-     
-     In the `.env` file, declare a `SECRET_KEY` variable as follows
-     
-      `SECRET_KEY=<generated key>`
+      ```python
+      from django.core.management.utils import get_random_secret_key
+      ```
       
-   *The castle is well-protected now :)*
-
----
-
-### If you using a PostgreSQL database
-
-- Install the PostgreSQL database connection package
+    - Generate a random key
+      
+      On the next line we can now use the function to generate the secret key.
+      
+      ```python
+      print(get_random_secret_key())
+      ```
+      
+    - Hide the key
+      
+      Copy the generated key and exit the shell interface using the following command :
+      
+      ```python
+      exit()
+      ```
+      
+      In the `.env` file, declare a `SECRET_KEY` variable as follows :
+      
+      ```python
+      SECRET_KEY=<generated key>
+      ```
+      
+      *The castle is well-protected now. :)*
+      
+- Setting up the database
   
-  - Windows :
+  - Install the PostgreSQL database connection package
     
-    `pip install psycopg2`
+    - Windows
+      
+      ```powershell
+      pip install psycopg2
+      ```
+      
+    - Linux
+      
+      ```powershell
+      pip install psycopg2-binary
+      ```
+      
+  - Create the database through pgAdmin
     
-  - Linux or Mac OS :
+  - Update `project/settings.py`
     
-    `pip install psycopg2-binary`
+    ```python
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "NAME": os.environ.get("DB_NAME"),
+            "USER": os.environ.get("DB_USER"),
+            "PASSWORD": os.environ.get("DB_PASSWORD"),
+            "HOST": "127.0.0.1",
+            "PORT": "5432",
+        }
+    }
+    ```
     
-- Create database :
+  - Update `project/.env`
+    
+    ```python
+    DB_NAME=<database name>
+    DB_USER=<database user>
+    DB_PASSWORD=<database password>
+    ```
+    
+- Make the first migrations
   
-  - Database settings :
-    
-    - Name : ``<database name>``
-    - User : ``<database user name> (default : postgres)``
-    - Password : ``<database password>``
+  ```powershell
+  <Python command> manage.py makemigrations
+  <Python command> manage.py migrate
+  ```
   
-- Update `project/settings.py` [(*source*)](https://codinggear.blog/django-environment-variables/) :
+- Populate database
+  
+  ```powershell
+  <Python command> manage.py init_local_dev
+  ```
+  
+  When populating the database, a superuser is created.
+  
+  Superuser credentials :
+  
+  - Username : admin
+    
+  - Password : admin
+    
+- Update `base_user.py`
   
   ```python
-  DATABASES = {
-      "default": {
-          "ENGINE": "django.db.backends.postgresql_psycopg2",
-          "NAME": os.environ.get("DB_NAME"),
-          "USER": os.environ.get("DB_USER_NAME"),
-          "PASSWORD": os.environ.get("DB_PASSWORD"),
-          "HOST": "127.0.0.1",
-          "PORT": "5432",
-      }
-  }
-  ```
+  # Windows : .env/Lib/site-packages/django/contrib/auth/base_user.py
+  # Linux : .env/lib/python<Python version>/site-packages/django/contrib/auth/base_user.py
   
-- Update `project/.env` :
-  
-  ```
-  DB_NAME=<database name>
-  DB_USER_NAME=<database user name> (default : postgres)
-  DB_PASSWORD=<database password>
-  ```
-
----
-
-- Make the first migrations :
-  
-  - Windows :
-    
-    `py manage.py makemigrations`
-    
-    `py manage.py migrate`
-    
-  - Linux or Mac OS :
-    
-    `python3 manage.py migrate` or `python manage.py migrate`
-    
-    `python3 manage.py makemigrations` or `python manage.py makemigrations`
-    
-    `python3 manage.py migrate` or `python manage.py migrate`
-    
-- Create datasets :
-
-  - Windows :
-
-    `py manage.py init_local_dev`
-
-  - Linux or Mac OS :
-
-    `python3 manage.py init_local_dev` or `python manage.py init_local_dev`
-
-- Update `base_user.py` :
-
-  - Path (Windows) :
-
-    `.env/Lib/site-packages/django/contrib/auth/base_user.py`
-
-  - Path (Linux or Mac OS) :
-
-    `.env/lib/python<Python version>/site-packages/django/contrib/auth/base_user.py`
-
-  ```python
   from django.db import transaction
-
+  
   class AbstractBaseUser(models.Model):
     password = models.CharField(_("password"), max_length=128)
     last_login = models.DateTimeField(_("last login"), blank=True, null=True)
     #...
     @transaction.atomic
     def deactivate(self):
-        if self.is_active is False:
-            return
-        
-        self.is_active = False
-        self.save()
-
+        if self.is_active is True:
+            self.is_active = False
+            self.save()
+  
     @transaction.atomic
     def activate(self):
-        if self.is_active is True:
-            return
-        
-        self.is_active = True
-        self.save()
+        if self.is_active is False:
+            self.is_active = True
+            self.save()
   ```
-
----
+  
 
 ## API REST
 
-| URI                                               | Authorization    | Method | Data      | Description                  |
-| ------------------------------------------------- | ---------------- | ------ | --------- | ---------------------------- |
-|                /api/users/                        | No Auth          | GET    | None      | Get users list               |
-|                /api/users/{{id_user}}/            | No Auth          | GET    | None      | Get user instance            |
-|                /api/users/{{id_user}}/            | Basic Auth       | PATCH  | `[email]` | Update user's instance email |
-|                /api/users/{{id_user}}/deactivate/ | Basic Auth       | PATCH  | None      | Deactivate user instance     |
-|                /api/users/{{id_user}}/activate/   | Basic Auth       | PATCH  | None      | Activate user instance       |
-
----
+| URI | Authorization | Method | Data | Description |
+| --- | --- | --- | --- | --- |
+| /api/users/ | No Auth | GET | None | List of users |
+| /api/users/\<id_user\>/ | No Auth | GET | None | User instance |
+| /api/users/\<id_user\>/ | Basic Auth | PATCH | {"email": "\<new email\>"} | Update user's instance email |
+| /api/users/\<id_user\>/activate/ | Basic Auth | PATCH | None | Activate user instance |
+| /api/users/\<id_user\>/deactivate/ | Basic Auth | PATCH | None | Deactivate user instance |
