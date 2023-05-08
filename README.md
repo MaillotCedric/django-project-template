@@ -7,13 +7,13 @@ The template is based on Django framework and allows you to rapidly create a RES
 ## Setting up the repository
 
 - Choose a new repository name
-  
+
 - Use it to rename the current cloned repository
-  
+
 - Delete the current `.git` folder (the folder might be hidden)
-  
+
 - Update `README.md`
-  
+
 - Run the following command in the terminal of the repository :
   
   ```git
@@ -21,7 +21,6 @@ The template is based on Django framework and allows you to rapidly create a RES
   git add .
   git commit -m "<commit message>"
   ```
-  
 
 *You are now ready to install the project. :)*
 
@@ -32,7 +31,7 @@ The template is based on Django framework and allows you to rapidly create a RES
   ```powershell
   <Python command> -m venv .env
   ```
-  
+
 - Activate the virtual environment
   
   - Windows
@@ -40,25 +39,25 @@ The template is based on Django framework and allows you to rapidly create a RES
     ```powershell
     .env\Scripts\activate
     ```
-    
+  
   - Linux
     
     ```powershell
     source .env/bin/activate
     ```
-    
+
 - Install packages
   
   ```powershell
   pip install -r requirements.txt
   ```
-  
+
 - Hide the key to the castle
   
   - Create the safe
     
     Inside `project` folder, create a file called `.env`.
-    
+  
   - Generate the key
     
     We gonna generate the key through the Django shell interface.
@@ -76,7 +75,7 @@ The template is based on Django framework and allows you to rapidly create a RES
       ```python
       from django.core.management.utils import get_random_secret_key
       ```
-      
+    
     - Generate a random key
       
       On the next line we can now use the function to generate the secret key.
@@ -84,7 +83,7 @@ The template is based on Django framework and allows you to rapidly create a RES
       ```python
       print(get_random_secret_key())
       ```
-      
+    
     - Hide the key
       
       Copy the generated key and exit the shell interface using the following command :
@@ -100,7 +99,7 @@ The template is based on Django framework and allows you to rapidly create a RES
       ```
       
       *The castle is well-protected now. :)*
-      
+
 - Setting up the database
   
   - Install the PostgreSQL database connection package
@@ -110,15 +109,15 @@ The template is based on Django framework and allows you to rapidly create a RES
       ```powershell
       pip install psycopg2
       ```
-      
+    
     - Linux
       
       ```powershell
       pip install psycopg2-binary
       ```
-      
+  
   - Create the database through pgAdmin
-    
+  
   - Update `project/settings.py`
     
     ```python
@@ -133,7 +132,7 @@ The template is based on Django framework and allows you to rapidly create a RES
         }
     }
     ```
-    
+  
   - Update `project/.env`
     
     ```python
@@ -141,14 +140,14 @@ The template is based on Django framework and allows you to rapidly create a RES
     DB_USER=<database user>
     DB_PASSWORD=<database password>
     ```
-    
+
 - Make the first migrations
   
   ```powershell
   <Python command> manage.py makemigrations
   <Python command> manage.py migrate
   ```
-  
+
 - Populate database
   
   ```powershell
@@ -160,9 +159,9 @@ The template is based on Django framework and allows you to rapidly create a RES
   Superuser credentials :
   
   - Username : admin
-    
+  
   - Password : admin
-    
+
 - Update `base_user.py`
   
   ```python
@@ -187,14 +186,14 @@ The template is based on Django framework and allows you to rapidly create a RES
             self.is_active = True
             self.save()
   ```
-  
 
 ## API REST
 
-| URI | Authorization | Method | Data | Description |
-| --- | --- | --- | --- | --- |
-| /api/users/ | No Auth | GET | None | List of users |
-| /api/users/\<id_user\>/ | No Auth | GET | None | User instance |
-| /api/users/\<id_user\>/ | Basic Auth | PATCH | {"email": "\<new email\>"} | Update user's instance email |
-| /api/users/\<id_user\>/activate/ | Basic Auth | PATCH | None | Activate user instance |
-| /api/users/\<id_user\>/deactivate/ | Basic Auth | PATCH | None | Deactivate user instance |
+| URI                                | Authorization | Method | Data                       | Description                  |
+| ---------------------------------- | ------------- | ------ | -------------------------- | ---------------------------- |
+| /api/users/                        | No Auth       | GET    | None                       | List of users                |
+| /api/users/\<id_user\>/            | No Auth       | GET    | None                       | User instance                |
+| /api/users/\<id_user\>/            | Basic Auth    | PATCH  | {"email": "\<new email\>"} | Update user's instance email |
+| /api/users/\<id_user\>/activate/   | Basic Auth    | PATCH  | None                       | Activate user instance       |
+| /api/users/\<id_user\>/deactivate/ | Basic Auth    | PATCH  | None                       | Deactivate user instance     |
+| /api/predict/                      | No Auth       | GET    | None                       | Dummy price prediction       |
