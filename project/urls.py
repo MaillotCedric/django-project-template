@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from app.viewsets import UsersAPIViewset
-# from app.views import login_
+from app.views import login_, PredictAPIView
 
 router = routers.SimpleRouter()
 
@@ -28,5 +28,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("app.urls")),
     path("api/", include(router.urls)),
+    path("api/predict/", PredictAPIView.as_view()),
     # path("login/", login_, name="login"),
 ]
