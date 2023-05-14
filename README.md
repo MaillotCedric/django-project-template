@@ -204,3 +204,10 @@ Tokens lifetime :
 
 - access token : 1 day
 - refresh token : 15 minutes
+
+## Run server
+
+``` powershell
+<Python command> manage.py runserver
+```
+
