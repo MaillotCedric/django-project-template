@@ -199,3 +199,8 @@ The template is based on Django framework and allows you to rapidly create a RES
 | /api/predict/                      | No Auth       | GET    | None                                                     | Dummy price prediction       |
 | /api/token/                        | No Auth       | POST   | {"username": "\<username\>", "password": "\<password\>"} | Access and refresh tokens    |
 | /api/token/refresh/                | No Auth       | POST   | {"refresh": "\<refresh token\>"}                         | New access token             |
+
+Tokens lifetime :
+
+- access token : 1 day
+- refresh token : 15 minutes
