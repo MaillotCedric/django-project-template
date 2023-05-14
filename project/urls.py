@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from app.viewsets import UsersAPIViewset
 from app.views import login_, PredictAPIView
 
@@ -29,5 +30,7 @@ urlpatterns = [
     path("", include("app.urls")),
     path("api/", include(router.urls)),
     path("api/predict/", PredictAPIView.as_view()),
+    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     # path("login/", login_, name="login"),
 ]

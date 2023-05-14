@@ -21,6 +21,7 @@ Sources
 . https://codinggear.blog/django-environment-variables/
 """
 from dotenv import load_dotenv
+from datetime import timedelta
 
 import os
 
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "rest_framework",
     "corsheaders",
+    "rest_framework_simplejwt",
     "app",
 ]
 
@@ -149,14 +151,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 10,
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework.authentication.BasicAuthentication",
-        "rest_framework.authentication.TokenAuthentication",
-        "rest_framework.authentication.SessionAuthentication",
-    ),
+    # "DEFAULT_AUTHENTICATION_CLASSES": (
+    #     "rest_framework.authentication.BasicAuthentication",
+    #     "rest_framework.authentication.TokenAuthentication",
+    #     "rest_framework.authentication.SessionAuthentication",
+    # ),
+    "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework_simplejwt.authentication.JWTAuthentication",)
     # "DEFAULT_PERMISSION_CLASSES": (
     #     "rest_framework.permissions.IsAdminUser"
     # ),
+}
+
+SIMPLE_JWT = {
+    "SLIDING_TOKEN_LIFETIME": timedelta(days=1),
+    "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(minutes=15),
 }
 
 MESSAGE_TAGS = {
