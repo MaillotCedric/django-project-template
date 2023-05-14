@@ -73,6 +73,7 @@ MIDDLEWARE = [
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     "http://localhost:8080",
+    "http://localhost:5173",
 )
 
 ROOT_URLCONF = 'project.urls'
