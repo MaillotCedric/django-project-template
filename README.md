@@ -189,16 +189,16 @@ The template is based on Django framework and allows you to rapidly create a RES
 
 ## API REST
 
-| URI                                | Authorization | Method | Data                                                     | Description                  |
-| ---------------------------------- | ------------- | ------ | -------------------------------------------------------- | ---------------------------- |
-| /api/users/                        | No Auth       | GET    | None                                                     | List of users                |
-| /api/users/\<id_user\>/            | No Auth       | GET    | None                                                     | User instance                |
-| /api/users/\<id_user\>/            | Basic Auth    | PATCH  | {"email": "\<new email\>"}                               | Update user's instance email |
-| /api/users/\<id_user\>/activate/   | Basic Auth    | PATCH  | None                                                     | Activate user instance       |
-| /api/users/\<id_user\>/deactivate/ | Basic Auth    | PATCH  | None                                                     | Deactivate user instance     |
-| /api/predict/                      | No Auth       | GET    | None                                                     | Dummy price prediction       |
-| /api/token/                        | No Auth       | POST   | {"username": "\<username\>", "password": "\<password\>"} | Access and refresh tokens    |
-| /api/token/refresh/                | No Auth       | POST   | {"refresh": "\<refresh token\>"}                         | New access token             |
+| URI                                | Authorization | Method | Data                                   | Description                  |
+| ---------------------------------- | ------------- | ------ | -------------------------------------- | ---------------------------- |
+| /api/users/                        | No Auth       | GET    | None                                   | List of users                |
+| /api/users/{{id_user}}/            | No Auth       | GET    | None                                   | User instance                |
+| /api/users/{{id_user}}/            | Bearer Token  | PATCH  | email: `string`                        | Update user's instance email |
+| /api/users/{{id_user}}/activate/   | Bearer Token  | PATCH  | None                                   | Activate user instance       |
+| /api/users/{{id_user}}/deactivate/ | Bearer Token  | PATCH  | None                                   | Deactivate user instance     |
+| /api/predict/                      | No Auth       | GET    | None                                   | Dummy price prediction       |
+| /api/token/                        | No Auth       | POST   | username: `string`, password: `string` | Access and refresh tokens    |
+| /api/token/refresh/                | No Auth       | POST   | refresh: `string`                      | New access token             |
 
 Tokens lifetime :
 
