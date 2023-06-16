@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # using whitenoise in development
+    "whitenoise.runserver_nostatic", # FIXME - comment when in production!
     'django.contrib.staticfiles',
     "rest_framework",
     "corsheaders",
@@ -61,6 +63,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # enabling whitenoise
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
@@ -143,6 +147,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+# configuring whitenoise
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STORAGES = { # adding compression and/or caching support (Django 4.2+)
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage", # compression AND caching
+        # OR
+        # "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage", # ONLY compression
+    },
+}
+# adding compression and/or caching support (older Django version)
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage" # compression AND caching
+# OR
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage" # ONLY compression
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
