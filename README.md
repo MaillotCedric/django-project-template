@@ -210,4 +210,14 @@ Tokens lifetime :
 ``` powershell
 <Python command> manage.py runserver
 ```
+## Deployment
 
+When deploying your application you’ll need to run :
+
+``` powershell
+<Python command> manage.py collectstatic
+```
+
+This command will put all your static files into `STATIC_ROOT` (constant found in `./project/settings.py`).
+
+*<ins>N.B.</ins> : If you’re running on Heroku, then this is done automatically for you.*
