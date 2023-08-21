@@ -221,3 +221,64 @@ When deploying your application you’ll need to run :
 This command will put all your static files into `STATIC_ROOT` (constant found in `./project/settings.py`).
 
 *<ins>N.B.</ins> : If you’re running on Heroku, then this is done automatically for you.*
+
+## Quick installation
+
+For a quick and easy installation you can use **Docker**.
+
+### Prerequisites
+
+- You have Docker installed.
+
+  > [How to install and use Docker](https://docs.docker.com/)
+
+### Containerize the application
+
+#### Build the app’s image
+
+Run the following command in the terminal of the repository :
+
+```bash
+docker build -t django-app .
+```
+
+#### Start an app container
+
+Run the following command in the terminal of the repository :
+
+```bash
+docker run -dp localhost:8000:8000 django-app
+```
+
+### Access the application
+
+Now that we have a container up and running, we can easily access the application by opening our favorite browser to http://localhost:8000 
+
+
+## Manage the app's container
+
+To manage the app's container you will need the container id.
+
+You can retrieve the container id by running the following command in the terminal of the repository :
+
+```bash
+docker container ls --all
+```
+
+### Stop the container
+
+You can stop the container by running the following command in the terminal of the repository :
+
+```powershell
+docker stop <CONTAINER_ID>
+```
+
+> When stopping the container, the application is not accessible anymore.
+>
+> To access the application again, you are gonna have to restart the container.
+
+You can restart the container by running the following command in the terminal of the repository :
+
+```powershell
+docker start <CONTAINER_ID>
+```
