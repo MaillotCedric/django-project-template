@@ -252,8 +252,17 @@ docker run -dp localhost:8000:8000 django-app
 
 ### Access the application
 
-Now that we have a container up and running, we can easily access the application by opening our favorite browser to http://localhost:8000 
+Now that we have a container up and running, we can easily access the application by opening our favorite browser to http://localhost:8000
 
+## Update the application
+
+Since our application is containerized, when you update the application, you are gonna have to rebuild the app's container to see the effective updates.
+
+You can rebuild the container by running the following commands in the terminal of the repository :
+
+```bash
+docker build -t django-app .
+```
 
 ## Manage the app's container
 
