@@ -41,8 +41,8 @@ SECRET_KEY = str(os.getenv("SECRET_KEY"))
 # FIXME - don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# Allow hosting on Azure
+ALLOWED_HOSTS = [".azurewebsites.net"]
 
 # Application definition
 
@@ -79,6 +79,12 @@ CORS_ORIGIN_WHITELIST = (
     "http://localhost:8080",
     "http://localhost:5173",
 )
+# Allow requests made from Azure web app
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://\w+\.azurewebsites\.net$",
+]
+# Allow requests made on Azure web app
+CSRF_TRUSTED_ORIGINS = ["https://*.azurewebsites.net"]
 
 ROOT_URLCONF = 'project.urls'
 
