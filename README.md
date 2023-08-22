@@ -270,3 +270,33 @@ You can restart the container by running the following command in the terminal o
 ```bash
 docker compose start
 ```
+## Share the application
+
+To share the application, we have to use a Docker registry.
+
+The default registry is Docker Hub.
+
+> [More information on how to share an app](https://docs.docker.com/get-started/04_sharing_app/)
+
+### Push on Hub
+
+Run the following commands in the terminal of the repository :
+
+```bash
+docker build -t YOUR-USER-NAME/django-project-template-app .
+# if you are not logged in
+docker login
+docker push YOUR-USER-NAME/django-project-template-app
+```
+
+### Update on Hub
+
+Run the following commands in the terminal of the repository :
+
+```bash
+docker build -t YOUR-USER-NAME/django-project-template-app .
+docker image prune
+# if you are not logged in
+docker login
+docker push YOUR-USER-NAME/django-project-template-app
+```
